@@ -1,18 +1,31 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TextInput } from 'react-native';
 class HomeScreen extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { name: '', company: '' };
+    }
+
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen 2</Text>
+                <Text>Enter Your details</Text>
+                <TextInput
+                    style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }}
+                    onChangeText={(name) => this.setState({ name })}
+                    value={this.state.name} />
+                <TextInput
+                    style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }}
+                    onChangeText={(company) => this.setState({ company })}
+                    value={this.state.company} />
                 <Button
                     title="Go to Details"
                     onPress={() => this.props.navigation.navigate('Details', {
-                        name: 'Shamnad',
-                        company: 'Gofore',
+                        name: this.state.name,
+                        company: this.state.company,
                     })}
                 />
-            </View>
+            </View >
         );
     }
 }
