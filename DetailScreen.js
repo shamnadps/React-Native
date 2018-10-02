@@ -3,7 +3,9 @@ import { View, Text, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 class DetailsScreen extends React.Component {
-
+    static navigationOptions = {
+        title: 'Details',
+    };
     render() {
         const { navigation } = this.props;
         const name = navigation.getParam('name', 'Missing Name');
